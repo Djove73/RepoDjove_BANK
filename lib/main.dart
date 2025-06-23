@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'register_page.dart';
 
 void main() {
   runApp(const MyBankApp());
@@ -176,11 +177,10 @@ class WelcomePage extends StatelessWidget {
                       height: 56,
                       child: OutlinedButton(
                         onPressed: () {
-                          // TODO: Navigate to register page
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Función de registro próximamente'),
-                              backgroundColor: Colors.green,
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const RegisterPage(),
                             ),
                           );
                         },

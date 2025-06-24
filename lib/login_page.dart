@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'register_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -343,8 +344,10 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                                   ),
                                   GestureDetector(
                                     onTap: () {
-                                      Navigator.pop(context);
-                                      // Navegar a registro si lo deseas
+                                      Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(builder: (context) => const RegisterPage()),
+                                      );
                                     },
                                     child: Text(
                                       'Regístrate',

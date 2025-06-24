@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'login_page.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'dashboard_page.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -100,7 +101,7 @@ class _RegisterPageState extends State<RegisterPage> with TickerProviderStateMix
         );
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => const LoginPage()),
+          MaterialPageRoute(builder: (context) => DashboardPage(userName: _nameController.text)),
         );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'register_page.dart';
+import 'login_page.dart';
 
 void main() {
   runApp(const MyBankApp());
@@ -136,11 +137,10 @@ class WelcomePage extends StatelessWidget {
                       height: 56,
                       child: ElevatedButton(
                         onPressed: () {
-                          // TODO: Navigate to login page
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Función de inicio de sesión próximamente'),
-                              backgroundColor: Colors.blue,
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const LoginPage(),
                             ),
                           );
                         },

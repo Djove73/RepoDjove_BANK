@@ -69,7 +69,7 @@ class _RegisterPageState extends State<RegisterPage> with TickerProviderStateMix
   Future<void> _register() async {
     if (_formKey.currentState!.validate() && _acceptTerms) {
       final response = await http.post(
-        Uri.parse('http://localhost:3000/register'),
+        Uri.parse('http://10.0.2.2:3000/register'),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({
           'name': _nameController.text,

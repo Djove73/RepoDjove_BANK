@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'register_page.dart';
+import 'dashboard_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -46,27 +47,18 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
 
   void _login() {
     if (_formKey.currentState!.validate()) {
-      // TODO: Implement login logic
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Row(
-            children: [
-              const Icon(Icons.check_circle, color: Colors.white),
-              const SizedBox(width: 12),
-              const Expanded(
-                child: Text(
-                  '¡Bienvenido de nuevo!',
-                  style: TextStyle(fontWeight: FontWeight.w600),
-                ),
-              ),
-            ],
-          ),
-          backgroundColor: Colors.blue,
-          behavior: SnackBarBehavior.floating,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        ),
+      if (_emailController.text == 'admin' && _passwordController.text == '1234') {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const DashboardPage(userName: 'admin')),
+        );
+        return;
+      }
+      // Aquí iría la lógica real de login con backend
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => DashboardPage(userName: _emailController.text)),
       );
-      // Navegar a la pantalla principal o dashboard
     }
   }
 
@@ -213,7 +205,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                                 if (value == null || value.isEmpty) {
                                   return 'Por favor ingresa tu correo';
                                 }
-                                if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value)) {
+                                if (value != 'admin' && !RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}\$').hasMatch(value)) {
                                   return 'Por favor ingresa un correo válido';
                                 }
                                 return null;
